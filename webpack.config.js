@@ -2,14 +2,27 @@
 // npm i -D webpack webpack-cli
 // npm i -D sass style-loader css-loader sass-loader
 // npm i -D html-webpack-plugin
+// npm i -D babel-loader @babel/core @babel/preset-env
+// npm i -D html-loader
 
 // combined
-// npm i -D webpack webpack-cli sass style-loader css-loader sass-loader html-webpack-plugin
+// npm i -D webpack webpack-cli sass style-loader css-loader sass-loader html-webpack-plugin babel-loader @babel/core @babel/preset-env html-loader
 
 // optional
-// npm i -D babel-loader @babel/core @babel/preset-env
 // npm i axios
 
+// for email
+// npm i -D @emailjs/browser
+
+// For posting live to git hub
+// Step 1
+// Remove the dist directory from the project’s .gitignore file.
+
+// Step 2
+// git add dist && git commit -m "Initial dist subtree commit"
+
+// Step 3
+// git subtree push --prefix dist origin gh-pages
 
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
@@ -23,14 +36,14 @@ module.exports = {
   },
   output: {
     path: path.resolve(__dirname, "dist"),
-    filename: "[name][contenthash].js",
+    filename: "[name].bundle.js",
     clean: true,
     assetModuleFilename: "[name][ext]",
   },
   devtool: "source-map",
   devServer: {
     static: {
-      directory: path.resolve(__dirname, "dist"),
+      directory: path.resolve(__dirname, "dist/"),
     },
     port: 3000,
     open: true,
